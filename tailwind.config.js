@@ -8,8 +8,14 @@ module.exports = {
       xl: '1440px',
     },
     extend: {
+      width: {
+        halfFull: '48%',
+      },
       colors: {
-        backgroundPurple: 'rgb(238 242 255 / 1)',
+        darkGrey: '#323232',
+        supLightPink: '#FDEFF4',
+        lightPink: '#FFC0D3',
+        strongPink: '#FF5C8D',
       },
     },
   },

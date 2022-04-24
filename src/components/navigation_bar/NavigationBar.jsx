@@ -1,19 +1,33 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
+import { FaHome, FaHistory } from 'react-icons/fa'
 
-function NavigationBar(props) {
+function NavigationBar() {
   return (
-    <nav className='flex flex-col bg-white'>
-      <NavLink id='items-nav-first' to='/'>
-        <div className='flex items-center px-4 py-2 space-x-4'>
-          <div className='w-5 h-5 bg-red-500 rounded-md'></div>
-          <span className='w-20'>Home</span>
+    <nav className='mt-4 px-4 flex flex-col space-y-2'>
+      <NavLink
+        to='/'
+        className={({ isActive }) =>
+          isActive
+            ? 'bg-gray-100 rounded-lg font-bold transition duration-500'
+            : 'bg-white rounded-none font-normal transition duration-500'
+        }>
+        <div className='flex justify-start items-center px-4 py-3 space-x-3'>
+          <FaHome size='1.2rem' />
+          <span className='text-lg md:w-44'>Trang chính</span>
         </div>
       </NavLink>
-      <NavLink id='items-nav-last' to='/history'>
-        <div className='flex items-center px-4 py-2 space-x-4'>
-          <div className='w-5 h-5 bg-red-500 rounded-md'></div>
-          <span className='w-20'>History</span>
+      <div className='w-full bg-gray-100 h-1 rounded-lg'></div>
+      <NavLink
+        to='/history'
+        className={({ isActive }) =>
+          isActive
+            ? 'bg-gray-100 rounded-lg font-bold transition duration-500'
+            : 'bg-white rounded-none font-normal transition duration-500'
+        }>
+        <div className='flex items-center px-4 py-3 space-x-3'>
+          <FaHistory size='1.2rem' />
+          <span className='text-lg md:w-44'>Lịch sử</span>
         </div>
       </NavLink>
     </nav>
