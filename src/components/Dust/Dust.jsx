@@ -1,31 +1,31 @@
 import React from 'react'
-
-Dust.propTypes = {}
+import { GiDustCloud } from 'react-icons/gi'
 
 function Dust(props) {
   const { dustList } = props
   return (
-    <ul className='cursor-pointer border rounded-lg bg-teal-50 py-10 shadow-lg font-medium text-center tracking-wider col-ul  row-span-2'>
-      <div className='font-medium text-center tracking-wider'>
-        <img src='/image/dust.svg' alt='' className='w-16 h-16 inline-block mb-3 mr-2' />
-        <h1 className='inline-block text-3xl'>Nồng độ bụi</h1>
+    <div className='w-full rounded-lg bg-gray-200 text-gray-600 flex flex-col justify-center items-center py-4 shadow-lg shadow-gray-200/40'>
+      <div className='flex items-center justify-center gap-4'>
+        <GiDustCloud size='2rem' />
+        <span className='text-3xl font-medium tracking-wider'>Nồng độ bụi</span>
       </div>
-
-      {dustList.map((dust) => {
-        const { id, name, value } = dust
-        return (
-          <li key={id} className='text-center text-3xl py-6'>
-            <span>{name}: </span>
-            <p className='text-4xl md:text-5xl lg:text-6xl py-3'>
-              {`${value} `}
-              <span className='text-4xl lg:text-5xl'>
-                ug/m<sup>3</sup>
+      <ul>
+        {dustList.map((dust) => {
+          const { id, name, value } = dust
+          return (
+            <li key={id} className='text-center text-3xl py-6'>
+              <span>{name}: </span>
+              <span className='text-4xl py-3'>
+                <span className='font-bold ml-2'>{`${value} `}</span>
+                <span className='text-3xl'>
+                  &#181;/m<sup>3</sup>
+                </span>
               </span>
-            </p>
-          </li>
-        )
-      })}
-    </ul>
+            </li>
+          )
+        })}
+      </ul>
+    </div>
   )
 }
 

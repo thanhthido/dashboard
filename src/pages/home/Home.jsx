@@ -1,14 +1,25 @@
 import React from 'react'
-import MainContent from '../../components/main_content/MainContent'
-import ItemsDetails from '../../components/items_details/ItemsDetails'
+import Temperature from '../../components/Temperature/Temperature'
+import NO2 from '../../components/NO2/NO2'
+import CO from '../../components/CO/CO'
+import CH4 from '../../components/CH4/CH4'
+import Dust from '../../components/Dust/Dust'
+import { motion } from 'framer-motion'
 
 function Home(props) {
   const { temp, no2, dustList, co, ch4 } = props
   return (
-    <div className='flex-grow font-semibold flex flex-col md:flex-row gap-4'>
-      <MainContent temp={temp} no2={no2} />
-      <ItemsDetails />
-    </div>
+    <motion.div
+      className='flex-grow mt-4 mx-4 flex flex-col lg:flex-row lg:flex-wrap gap-2'
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}>
+      <Temperature temp={temp} />
+      <NO2 no2={no2} />
+      <CO co={co} />
+      <CH4 ch4={ch4} />
+      <Dust dustList={dustList} />
+    </motion.div>
   )
 }
 

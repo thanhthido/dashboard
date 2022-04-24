@@ -1,18 +1,17 @@
 import React from 'react'
-
-Temperature.propTypes = {}
+import { FaTemperatureHigh } from 'react-icons/fa'
 
 function Temperature(props) {
   const { temp } = props
   return (
-    <div className='cursor-pointer border rounded-lg py-14 bg-teal-50 shadow-lg flex flex-col justify-center items-center'>
-      <div className='font-medium text-center tracking-wider'>
-        <img src='/image/temperature.svg' alt='' className='w-16 h-16 inline-block mb-3' />
-        <h1 className='inline-block text-3xl'>Nhiệt độ</h1>
+    <div className='w-full lg:w-halfFull rounded-lg bg-yellow-200 text-yellow-600 flex flex-col justify-center items-center py-4 shadow-lg shadow-yellow-200/40'>
+      <div className='flex items-center justify-center gap-4'>
+        <FaTemperatureHigh size='2rem' />
+        <span className='text-3xl font-medium tracking-wider'>Nhiệt Độ</span>
       </div>
-      <p className='text-center text-4xl md:text-5xl lg:text-6xl py-1'>
+      <p className='text-4xl'>
         {`${temp}°`}
-        <span className='text-4xl lg:text-5xl'>C</span>
+        <span>C</span>
       </p>
     </div>
   )
