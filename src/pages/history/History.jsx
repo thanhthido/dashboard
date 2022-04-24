@@ -13,7 +13,7 @@ function History() {
       exit={{ opacity: 0 }}>
       {/* <SubNavigationBar /> */}
       <div className='mr-4'>
-        <h1 class='text-3xl font-bold leading-normal text-gray-800'>Lịch sử</h1>
+        <h1 className='text-3xl font-bold leading-normal text-gray-800'>Lịch sử</h1>
 
         <TempHistory />
       </div>
