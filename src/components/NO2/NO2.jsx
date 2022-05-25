@@ -1,8 +1,9 @@
 import React from 'react'
 import { AiOutlineCloud } from 'react-icons/ai'
+import { useSelector } from 'react-redux'
 
-function NO2(props) {
-  const { no2 } = props
+function NO2() {
+  const no2Value = useSelector((state) => state.sensorData.no2Value)
   return (
     <div className='w-full lg:flex-1 rounded-lg bg-orange-200 text-orange-600 flex flex-col justify-center items-center py-4 shadow-lg shadow-orange-200/20'>
       <div className='flex items-center justify-center gap-4 text-center'>
@@ -12,9 +13,9 @@ function NO2(props) {
         </span>
       </div>
       <p className='text-4xl'>
-        {`${no2} `}
+        <span className='font-bold'>{`${no2Value} `}</span>
         <span className='text-3xl'>
-          &#181;/m<sup>3</sup>
+          mg/m<sup>3</sup>
         </span>
       </p>
     </div>
