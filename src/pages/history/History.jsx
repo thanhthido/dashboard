@@ -1,21 +1,72 @@
-import React from 'react'
-import { Outlet } from 'react-router-dom'
-import SubNavigationBar from '../../components/sub_navigation_bar/SubNavigationBar'
+import el from 'date-fns/esm/locale/el/index.js'
 import { motion } from 'framer-motion'
-import TempHistory from '../../components/temp_history/TempHistory'
+import React, { useEffect, useState } from 'react'
+import { Outlet } from 'react-router-dom'
+import SensorApi from '../../api/SensorApi'
+import HistoryPagination from '../../components/HistoryPagination'
+import HistoryList from '../../components/history_list'
 
 function History() {
+  const [sensorDataList, setSensorDataList] = useState([])
+  const [pagination, setPagination] = useState({
+    page: 1,
+    limit: 14,
+    total: 14,
+  })
+
+  const [filters, setFilters] = useState({
+    limit: 14,
+    event: 'all',
+    page: 1,
+  })
+
+  const [id, setId] = useState(0)
+
+  const handlePageChange = (newPage) => {
+    setFilters({
+      ...filters,
+      page: newPage,
+    })
+  }
+
+  const fetchAllSensorData = async () => {
+    try {
+      const { sensorDataList, total, page } = await SensorApi.getSensorDataByTypesAndEvents(filters)
+      const limit = 14
+      const pagination = {
+        total: total,
+        page: page,
+        limit: limit,
+      }
+      if (page === 1) {
+        setId(0)
+      } else {
+        setId((page - 1) * limit)
+      }
+      setPagination(pagination)
+      setSensorDataList(sensorDataList)
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+  useEffect(() => {
+    fetchAllSensorData()
+  }, [filters])
+
   return (
     <motion.div
       className='sm:px-6 w-full min-h-screen mt-4 mx-4'
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}>
-      {/* <SubNavigationBar /> */}
       <div className='mr-4'>
-        <h1 className='text-3xl font-bold leading-normal text-gray-800'>Lịch sử</h1>
+        <div className='flex flex-row justify-between items-center'>
+          <h1 className='text-3xl font-bold leading-normal text-gray-800'>Lịch sử</h1>
+          <HistoryPagination pagination={pagination} onPageChange={handlePageChange} />
+        </div>
 
-        <TempHistory />
+        <HistoryList sensorDataList={sensorDataList} id={id} />
       </div>
       <Outlet />
     </motion.div>
