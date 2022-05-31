@@ -11,7 +11,10 @@ function HistoryPagination(props) {
   }
 
   return (
-    <div className='flex space-x-2'>
+    <div className='flex space-x-3 items-end pr-4 lg:p0'>
+      <span className='text-2xl'>
+        {totalPages === 0 ? `0/${totalPages}` : `${page}/${totalPages}`}
+      </span>
       <button
         disabled={page <= 1}
         onClick={() => handlePageChange(page - 1)}
@@ -19,7 +22,7 @@ function HistoryPagination(props) {
         Trước
       </button>
       <button
-        disabled={page === totalPages}
+        disabled={page >= totalPages}
         onClick={() => handlePageChange(page + 1)}
         className='py-2 px-4 bg-sky-500 disabled:bg-gray-300 text-white disabled:text-gray-600 rounded-md font-medium'>
         Tiếp

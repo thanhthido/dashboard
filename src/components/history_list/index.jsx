@@ -60,7 +60,7 @@ function HistoryList(props) {
                     ) : type === 'pm10' ? (
                       <span className='text-dust font-medium'>PM10.0</span>
                     ) : (
-                      <span className='text-dust font-medium'>PM25.0</span>
+                      <span className='text-dust font-medium'>PM2.5</span>
                     )}
                   </td>
                   <td className='whitespace-nowrap p-3 text-lg text-gray-700'>{sensorData.msg}</td>

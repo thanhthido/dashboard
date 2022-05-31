@@ -5,8 +5,12 @@ const SensorApi = {
     const pathUrl = '/data/latest'
     return axiosClient.get(pathUrl)
   },
-  getSensorDataByTypesAndEvents: (params) => {
+  getAllSensorData: (params) => {
     return axiosClient.get('', { params })
+  },
+  getSensorDataByTypesAndEvents: (params) => {
+    const pathUrl = '/data'
+    return axiosClient.get(pathUrl, { params })
   },
 }
 
