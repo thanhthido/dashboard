@@ -2,7 +2,7 @@ import axios from 'axios'
 import queryString from 'query-string'
 
 const axiosClient = axios.create({
-  baseURL: 'http://localhost:8001/sensorsData',
+  baseURL: 'http://139.162.9.131:8001/sensorsData',
   headers: {
     'content-type': 'application/json',
   },
